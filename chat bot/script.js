@@ -7,7 +7,7 @@ function addMessage(text, className) {
   div.className = "message " + className;
   div.innerText = text;
   chatBox.appendChild(div);
-  // chatBox.scrollTop = chatBox.scrollHeight;
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 async function sendMessage() {
