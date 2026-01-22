@@ -6,7 +6,7 @@ export default function Navbar (){
   return (
     <>         
     <nav>
-        <Link to="/">Home</Link>
+        <Link to="/">Home page</Link>
       <Link to="/about">about</Link> 
       </nav>
       </>
