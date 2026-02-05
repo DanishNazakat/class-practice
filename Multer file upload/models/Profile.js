@@ -8,3 +8,5 @@ const ProfileSchema = new mongoose.Schema({
 }, { timestamps: true });                        // createdAt aur updatedAt auto create
 
 module.exports = mongoose.model('Profile', ProfileSchema);
+ 
+   
