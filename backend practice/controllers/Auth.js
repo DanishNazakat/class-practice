@@ -66,19 +66,29 @@ const login = async (req, res) => {
                 message: "Invalid Email or Password"
             })
         }
-
         const token = jwt.sign(
-            { id: userData._id },
+            { id: userData._id, email: userData.email },
             process.env.JWT_SECRET,
-            {expiresIn: '1h'}
-        );
-        console.log("Generated Token:", token);
+            { expiresIn: "1h" }
+        )
+        console.log("this is Token value " + token)
         res.cookie("token", token, {
-            httpOnly: true,          // JS access nahi kar sakta
-            secure: false,           // production me true karna (HTTPS)
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+            httpOnly: true,
+            secure: false, // true sirf https me
+            maxAge: 24 * 60 * 60 * 1000
         });
-          console.log("Cookie Sent:", res.getHeader("Set-Cookie"));
+        // const token = jwt.sign(
+        //     { id: userData._id },
+        //     process.env.JWT_SECRET,
+        //     {expiresIn: '1h'}
+        // );
+        // console.log("Generated Token:", token);
+        // res.cookie("token", token, {
+        //     httpOnly: true,          // JS access nahi kar sakta
+        //     secure: false,           // production me true karna (HTTPS)
+        //     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        // });
+        //   console.log("Cookie Sent:", res.getHeader("Set-Cookie"));
         return res.status(200).json({
             message: "login Successfully",
             user: {
@@ -90,7 +100,7 @@ const login = async (req, res) => {
     } catch (err) {
         res.send({
             massage: "server internal Error",
-            error : err.message
+            error: err.message
         })
     }
 }
