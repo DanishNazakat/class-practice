@@ -7,7 +7,7 @@ const authMiddleware = async (req, res, next) => {
   if (!token) {
      return res.status(401).json({
       success: false,
-      message: "No token, authorization denied"
+      message: "No token, authorization denied 1"
     });
   }
   try {
@@ -19,7 +19,7 @@ const authMiddleware = async (req, res, next) => {
   }catch(err){
    return res.status(401).json({
       success: false,
-      message: "No token, authorization denied"
+      message: "No token, authorization denied 2"
     });
   }
 
