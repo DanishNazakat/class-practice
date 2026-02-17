@@ -3,13 +3,15 @@ const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middleware/verifyToken")
 const {signup ,login} = require('../controllers/Auth');
-const {addProduct , getProduct} = require("../controllers/productController");
+const {addProduct , getProduct , deleteProduct ,updateProduct} = require("../controllers/productController");
 
 
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/addProduct', authMiddleware ,addProduct)
-router.post('/getProduct', getProduct)
+router.get('/getProduct', getProduct)
+router.delete("/delete/:id", deleteProduct);
+router.put("/updateProduct/:id", updateProduct);
 
 router.get("/dashboard",authMiddleware, (req, res) => {
   res.json({
