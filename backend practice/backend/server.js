@@ -7,7 +7,10 @@ const app = express();
 const router = require('./router/route')
 app.use(cookieParser());
 app.use(express.json());
-app.use('/
+app.use('/api' , router)
+// app.use(authMiddleware);
+dbConnection();
+app.listen(process.env.PORT, ()=>{
     console.log(`server is running on PORT ${process.env.PORT}`);
 })
 
