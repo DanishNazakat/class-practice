@@ -6,8 +6,7 @@ const dbConnection = require('./db/dbconnection')
 const app = express();
 const router = require('./router/route')
 app.use(cookieParser());
-app.use(express.json());
-app.use('/api' , router)
+
 // app.use(authMiddleware);
 dbConnection();
 app.listen(process.env.PORT, ()=>{
